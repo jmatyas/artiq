@@ -3,7 +3,7 @@ from migen.build.platforms.sinara import kasli
 
 from artiq.gateware.szservo import servo
 from artiq.gateware.szservo.pads import ZotinoPads, SamplerPads, PGIAPads
-from .eem2 import *
+from eem2 import *
 
 # number of channels used for control
 channels_no = 2
