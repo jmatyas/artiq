@@ -21,7 +21,6 @@ class TB(Module):
         self.sclk = Signal()
 
         self.ldac = Signal(reset = 1)
-        # self.busy = Signal(reset = 1)
         self.syncr = Signal(reset = 1)
         self.clr = Signal()
 
@@ -79,7 +78,6 @@ class DACSim(DAC):
 
         for i in range (dac_p.channels):
             yield dut.profile[i].eq(prof0 + 0x2000000000000000*i)
-            # yield dut.profile[i].eq(0xA + i)
 
         for i in range(start_delay + 3):
             yield
@@ -98,12 +96,10 @@ class DACSim(DAC):
 
 def main():
     dac = DACSim()
-    run_simulation(dac, dac.test(), vcd_name = "dac_ser.vcd")
+    run_simulation(dac, dac.test(), vcd_name = "test_results/dac_ser.vcd")
 
     
 if __name__ == "__main__":
-    print(t_spi_cycle)
-    print(t_spi_cycle*8*ns)
 
     logging.basicConfig(level=logging.DEBUG)
     main()

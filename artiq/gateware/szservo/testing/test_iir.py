@@ -84,50 +84,6 @@ def main():
         word, addr, mask = dut._coeff(channel, profile, coeff = k)
         dut.comb += addrs[i].eq(addr), words[i].eq(word), masks[i].eq(mask), values[i].eq(coeff[k])
         print(k, word, addr, mask, coeff[k])
-    
-    # dut.comb += [
-    #     addrs[0].eq(0),      # ftw1
-    #     addrs[1].eq(0),      # b1
-    #     addrs[2].eq(5),      # pow
-    #     addrs[3].eq(5),      # cfg
-    #     addrs[4].eq(7),      # offset
-    #     addrs[5].eq(7),      # a1
-    #     addrs[6].eq(1),      # ftw0
-    #     addrs[7].eq(1),      # b0
-
-    #     values[0].eq(0x5A),
-    #     values[1].eq(10),
-    #     values[2].eq(0xF),
-    #     values[3].eq(0xAB),
-    #     values[4].eq(5),
-    #     values[5].eq(10),
-    #     values[6].eq(0xF),
-    #     values[7].eq(0xAB),
-
-    #     words[0].eq(0),
-    #     words[1].eq(1),
-    #     words[2].eq(0),
-    #     words[3].eq(1),
-    #     words[4].eq(0),
-    #     words[5].eq(1),
-    #     words[6].eq(0),
-    #     words[7].eq(1),
-    
-    # ]
-
-
-    # for i in range(length):
-    #     dut.comb += masks[i].eq(0xFF)
-
-    # dut.sync +=[
-    #     If(~dut.loading,
-    #         dut.adc[channel].eq(adc)                     # assinging adc number to iir and in result to dac channel
-    #     ),
-    #     dut.ctrl[channel].en_iir.eq(1),
-    #     dut.ctrl[channel].en_out.eq(1),
-    #     dut.ctrl[channel].profile.eq(profile),
-    #     dut. start.eq(dut.done_writing)
-    # ]
 
 
     dut.comb += dut.start_coeff.eq(~dut.done_writing),
